@@ -1,0 +1,297 @@
+/**************************************/
+/* Layout
+/**************************************/
+
+body {
+  background: black;
+  overflow-x: hidden;
+}
+
+.offset-nav-top {
+  margin-top: 56px;
+}
+
+.offset-nav-bottom {
+  margin-bottom: 56px;
+}
+
+.section {
+  height: calc(100vh - 112px);
+}
+
+.section-80 {
+  height: calc(80vh - 112px);
+}
+
+.section-fluid {
+  min-height: calc(100vh - 112px);
+}
+
+.section-fluid-80 {
+  min-height: calc(80vh - 112px);
+}
+
+.section-fluid-20 {
+  min-height: calc(20vh - 112px);
+}
+
+.section-qt {
+  height: 25vh;
+}
+
+/**************************************/
+/* Home
+/**************************************/
+
+.hexagon-subtitle {
+  color: white;
+  font-size: calc(1.5vw + 5px);
+  z-index: 10;
+}
+
+.hexagon-title {
+  color: white;
+  font-size: calc(3vw + 5px);
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .hexagon-title {
+    font-size: 30px;
+  }
+
+  .hexagon-subtitle {
+    font-size: 15px;
+  }
+}
+
+/**************************************/
+/* Carousel
+/**************************************/
+
+.carousel-caption-middle {
+  top: 16.25rem;
+}
+
+.carousel-caption-bottom {
+  top: 30.25rem;
+}
+
+.carousel-caption-top {
+  top: 5.25rem;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.hexagon-loader {
+  width: calc(min(480px, 50vh - 96px));
+  height: calc(min(480px, 50vh - 96px));
+}
+
+/**************************************/
+/* Hero
+/**************************************/
+
+.white-shadow {
+  filter: drop-shadow(0px 0px 24px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 24, rgba(255, 255, 255, 0.8));
+}
+
+.white-shadow-high {
+  filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 4, rgba(255, 255, 255, 0.8));
+}
+
+.white-fill {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.white-fill-2 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/**************************************/
+/* Project List
+/**************************************/
+
+.box-white-shadow {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 10, rgba(255, 255, 255, 0.8));
+}
+
+.hexagon-project {
+  min-height: 55px;
+  height: 5.6vw;
+}
+
+.project-icon {
+  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 20, rgba(255, 255, 255, 0.8));
+}
+
+.project-icon:hover {
+  filter: none;
+  -webkit-filter: none;
+}
+
+.project-icon:active {
+  filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 1, rgba(255, 255, 255, 0.8));
+}
+
+@media (max-width: 768px) {
+  .project-icon {
+    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.8));
+    -webkit-filter: drop-shadow(0, 0, 20, rgba(255, 255, 255, 0.8));
+  }
+
+  .project-icon:hover {
+    filter: none;
+  }
+
+  .project-icon:active {
+    filter: none;
+  }
+}
+
+.m-2--responsive {
+  margin: calc(max(8px, 1.5vw));
+}
+
+/**************************************/
+/* Stack
+/**************************************/
+
+.stack-icon {
+  filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 30, rgba(255, 255, 255, 0.8));
+}
+
+.stack-icon:hover {
+  filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 25, rgba(255, 255, 255, 0.8));
+}
+
+.stack-icon:active {
+  filter: drop-shadow(0px 0px 23px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 23, rgba(255, 255, 255, 0.8));
+}
+
+.fade {
+  -webkit-transition-duration: 5s; /* Safari */
+  transition-duration: 0.3s;
+}
+
+.fade.show {
+  -webkit-transition-duration: 5s; /* Safari */
+  transition-duration: 0.3s;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.h-30 {
+  height: 30%;
+}
+
+.h-70 {
+  height: 70%;
+}
+
+/**************************************/
+/* Background
+/**************************************/
+
+.hexagon-container {
+  position: relative;
+}
+
+.hexagon-svg {
+  position: fixed;
+  top: 56px;
+  right: 0px;
+  height: 100vh;
+  width: auto;
+  float: right;
+}
+
+/**************************************/
+/* Utility
+/**************************************/
+
+.h-20 {
+  height: 20%;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.border--dashed {
+  border-style: dashed !important;
+  border-width: 3px !important;
+}
+
+/**************************************/
+/* Test
+/**************************************/
+
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  margin: 10px 0;
+}
+
+.project-list button {
+  width: 200px;
+  text-align: center;
+}
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.mt-3 {
+  margin-top: 5em;
+}
+
+.btn-black-white {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.btn-black-white:hover {
+  background-color: darkcyan;
+  color: white;
+  border: 1px solid white;
+}

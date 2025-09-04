@@ -1,0 +1,7 @@
+0.- Test changes on mobile, push when on VPN
+1.- OnClick stack icons, make the anchor tags position the user in the correct page element
+1.1.- Consider another stack display option.. too tricky
+1.2.- OnClicking a stack icon it should show an animation
+2.- Switch image hosting from imbb to AWS S3
+3.- Dropdown menu is not animated on mobile view on top navbar, should collapse and show
+4.- Load a project when selecting it from the navbar
