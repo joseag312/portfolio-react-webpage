@@ -13,7 +13,6 @@ export function GgHome() {
             <Container className='text-center'>
               <p className='hexagon-title white-shadow text-nowrap'>Hi! I'm Jose.</p>
               <p className='hexagon-subtitle white-shadow text-nowrap'>A software engineer&nbsp;☕️</p>
-              <p>You're welcome...</p>
             </Container>
           </Container>
         </Col>
