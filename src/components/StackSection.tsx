@@ -5,7 +5,7 @@ interface StackType {
   type: string;
 }
 
-function GgStackList({ type }: StackType) {
+function StackCard({ type }: StackType) {
   let iconDescs: string[] = [];
   let imgPaths: string[] = [];
 
@@ -36,7 +36,7 @@ function GgStackList({ type }: StackType) {
   );
 }
 
-function GgStack() {
+function StackSection() {
   const [frontActive, setFrontActive] = useState(false);
   const [backActive, setBackActive] = useState(false);
   const [opsActive, setOpsActive] = useState(false);
@@ -84,14 +84,14 @@ function GgStack() {
   if (!frontActive) {
     frontList = <img className='d-block stack-icon' src='/frontend.png' alt='' width='100' height='100' />;
   } else {
-    frontList = <GgStackList type='front'></GgStackList>;
+    frontList = <StackCard type='front'></StackCard>;
   }
 
   let backList;
   if (!backActive) {
     backList = <img className='d-block stack-icon' src='/backend.png' alt='' width='100' height='100' />;
   } else {
-    backList = <GgStackList type='back'></GgStackList>;
+    backList = <StackCard type='back'></StackCard>;
   }
 
   let opsList;
@@ -100,7 +100,7 @@ function GgStack() {
   } else {
     opsList = (
       <>
-        <GgStackList type='ops'></GgStackList>
+        <StackCard type='ops'></StackCard>
       </>
     );
   }
@@ -148,4 +148,4 @@ function GgStack() {
   );
 }
 
-export default GgStack;
+export default StackSection;

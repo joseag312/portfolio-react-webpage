@@ -1,9 +1,9 @@
-interface GgProjectProps {
+interface ProjectProps {
   projectName: string;
   onProjectSelect: (name: string) => void;
 }
 
-function GgProject(props: GgProjectProps) {
+function Project(props: ProjectProps) {
   function handleClick() {
     props.onProjectSelect(props.projectName);
   }
@@ -23,11 +23,11 @@ function GgProject(props: GgProjectProps) {
   );
 }
 
-interface GgProjectListProps {
+interface ProjectListProps {
   onProjectSelect: (name: string) => void;
 }
 
-function GgProjectList({ onProjectSelect }: GgProjectListProps) {
+function ProjectList({ onProjectSelect }: ProjectListProps) {
   let repos: string[] = ["project1", "project2", "project3", "project4", "project5", "project6", "project7"];
 
   return (
@@ -35,7 +35,7 @@ function GgProjectList({ onProjectSelect }: GgProjectListProps) {
       <div className='h-80 w-100 mx-4 px-4 d-flex flex-row flex-wrap align-items-center justify-content-center'>
         <div className='h-100 w-100 mx-4 px-4 d-flex flex-row flex-wrap align-items-center justify-content-center'>
           {repos.map((repoName) => (
-            <GgProject key={`${repoName}`} projectName={`${repoName}`} onProjectSelect={onProjectSelect} />
+            <Project key={`${repoName}`} projectName={`${repoName}`} onProjectSelect={onProjectSelect} />
           ))}
         </div>
       </div>
@@ -44,4 +44,4 @@ function GgProjectList({ onProjectSelect }: GgProjectListProps) {
   );
 }
 
-export default GgProjectList;
+export default ProjectList;

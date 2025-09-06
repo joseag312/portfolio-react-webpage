@@ -1,9 +1,13 @@
 import { Col, Row } from "react-bootstrap";
 import { QueryClient, QueryClientProvider } from "react-query";
-import GgBackground from "./src/components/GgBackground";
-import { GgBottomNav, GgTopNav } from "./src/components/GgNavBars";
-import { GgHero, GgHero2, GgHome, GgProjects } from "./src/components/GgSection";
-import GgStack from "./src/components/GgStack";
+import Background from "./src/components/Background";
+import { BottomNav } from "./src/components/BottomNav";
+import { HeroPrimary } from "./src/components/HeroPrimary";
+import { HeroSecondary } from "./src/components/HeroSecondary";
+import { Home } from "./src/components/Home";
+import { ProjectSection } from "./src/components/ProjectSection";
+import StackSection from "./src/components/StackSection";
+import { TopNav } from "./src/components/TopNav";
 import "./src/styles/styles.css";
 
 function App() {
@@ -11,35 +15,35 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <GgBackground />
-        <GgTopNav />
+        <Background />
+        <TopNav />
         <Row className='offset-nav-top'>
           <Col>
-            <GgHome />
+            <Home />
           </Col>
         </Row>
         <Row>
           <Col>
-            <GgHero />
+            <HeroPrimary />
           </Col>
         </Row>
         <div className='section-qt'></div>
         <Row>
           <Col>
-            <GgProjects />
+            <ProjectSection />
           </Col>
         </Row>
         <a id='Stack'></a>
         <div className='section-qt'></div>
         <Row className='offset-nav-bottom'>
-          <GgStack />
+          <StackSection />
         </Row>
         <Row>
           <Col>
-            <GgHero2 />
+            <HeroSecondary />
           </Col>
         </Row>
-        <GgBottomNav />
+        <BottomNav />
       </QueryClientProvider>
     </>
   );

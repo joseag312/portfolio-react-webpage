@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import GgCarousel from "./GgCarousel";
-import { PROJECT_CONFIG } from "./GgProjectConfig";
-import GgProjectList from "./GgProjectList";
-import { GgHexagonLoader } from "./GgSVG";
+import { HexagonLoader } from "./HexagonLoader";
+import ProjectCarousel from "./ProjectCarousel";
+import { PROJECT_CONFIG } from "./ProjectConfig";
+import ProjectList from "./ProjectList";
 
-function GgProjectContainer() {
+function ProjectContainer() {
   const [binStatus, setBinStatus] = useState("inactive");
   const [projectName, setProjectName] = useState("");
   const [projectData, setProjectData] = useState({});
@@ -35,7 +35,7 @@ function GgProjectContainer() {
     spinner = (
       <div className='d-flex h-100 flex-column align-items-center justify-content-center'>
         <div className='hexagon-loader'>
-          <GgHexagonLoader />
+          <HexagonLoader />
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ function GgProjectContainer() {
     const data: any = projectData;
     project = (
       <div className='position-relative h-100'>
-        <GgCarousel
+        <ProjectCarousel
           variant={data.variant}
           title1={data.title1}
           caption1={data.caption1}
@@ -86,7 +86,7 @@ function GgProjectContainer() {
       </div>
     );
   } else if (binStatus !== "loading") {
-    project = <GgProjectList onProjectSelect={handleProjectSelect} />;
+    project = <ProjectList onProjectSelect={handleProjectSelect} />;
   }
 
   return (
@@ -103,4 +103,4 @@ function GgProjectContainer() {
   );
 }
 
-export default GgProjectContainer;
+export default ProjectContainer;

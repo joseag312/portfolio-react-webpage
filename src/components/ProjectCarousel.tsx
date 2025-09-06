@@ -20,7 +20,7 @@ interface ProjectProps {
   color3: string;
 }
 
-function GgCarousel(props: ProjectProps) {
+function ProjectCarousel(props: ProjectProps) {
   let slide1: any;
   let slide2: any;
   let slide3: any;
@@ -72,4 +72,4 @@ function GgCarousel(props: ProjectProps) {
   );
 }
 
-export default GgCarousel;
+export default ProjectCarousel;

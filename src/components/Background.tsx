@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function GgBackground() {
+function Background() {
   const [width, setWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -12,12 +12,7 @@ function GgBackground() {
 
   return (
     <div className='hexagon-container position-relative'>
-      <svg
-        className='hexagon-svg'
-        viewBox={`${0} ${0} ${viewBoxW} ${viewBoxH}`}
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-      >
+      <svg className='hexagon-svg' viewBox={`${0} ${0} ${viewBoxW} ${viewBoxH}`} fill='none' xmlns='http://www.w3.org/2000/svg'>
         <path
           stroke='teal'
           strokeWidth={0.6}
@@ -306,4 +301,4 @@ function GgBackground() {
   );
 }
 
-export default GgBackground;
+export default Background;
