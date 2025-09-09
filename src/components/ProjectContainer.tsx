@@ -2,35 +2,37 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { HexagonLoader } from "./HexagonLoader";
 import ProjectCarousel from "./ProjectCarousel";
-import { PROJECT_CONFIG } from "./ProjectConfig";
+import { PROJECT_CONFIG, type Project, type ProjectKey } from "./ProjectConfig";
 import ProjectList from "./ProjectList";
 
 function ProjectContainer() {
-  const [binStatus, setBinStatus] = useState("inactive");
-  const [projectName, setProjectName] = useState("");
-  const [projectData, setProjectData] = useState({});
+  const [binStatus, setBinStatus] = useState<"inactive" | "loading" | "loaded">("inactive");
+  const [projectName, setProjectName] = useState<ProjectKey | null>(null);
+  const [projectData, setProjectData] = useState<Project | null>(null);
 
-  const projectList: any = PROJECT_CONFIG;
-
-  // Handle Project Selection
-  function handleProjectSelect(name: string) {
+  function handleProjectSelect(name: ProjectKey) {
     setBinStatus("loading");
     setProjectName(name);
     setTimeout(() => {
-      setProjectData(projectList[name]);
+      const data = PROJECT_CONFIG[name];
+      if (!data) {
+        setBinStatus("inactive");
+        setProjectName(null);
+        setProjectData(null);
+        return;
+      }
+      setProjectData(data);
       setBinStatus("loaded");
-    }, 3000); // Simulate loading time
+    }, 600);
   }
 
-  // Exit Button Handler
   function handleExitClick() {
     setBinStatus("inactive");
-    setProjectName("");
-    setProjectData({});
+    setProjectName(null);
+    setProjectData(null);
   }
 
-  // Conditional Display
-  let spinner;
+  let spinner: JSX.Element | null = null;
   if (binStatus === "loading") {
     spinner = (
       <div className='d-flex h-100 flex-column align-items-center justify-content-center'>
@@ -39,7 +41,7 @@ function ProjectContainer() {
         </div>
       </div>
     );
-  } else if (binStatus != "loaded") {
+  } else if (binStatus !== "loaded") {
     spinner = (
       <Row className='h-20'>
         <Col className='h-100'>
@@ -52,31 +54,31 @@ function ProjectContainer() {
     );
   }
 
-  let project;
-  if (binStatus === "loaded") {
-    const data: any = projectData;
+  let project: JSX.Element | null = null;
+  if (binStatus === "loaded" && projectData) {
+    const d = projectData;
     project = (
       <div className='position-relative h-100'>
         <ProjectCarousel
-          variant={data.variant}
-          title1={data.title1}
-          caption1={data.caption1}
-          img1={data.img1}
-          position1={data.position1}
-          color1={data.color1}
-          title2={data.title2}
-          caption2={data.caption2}
-          img2={data.img2}
-          position2={data.position2}
-          color2={data.color2}
-          title3={data.title3}
-          caption3={data.caption3}
-          img3={data.img3}
-          position3={data.position3}
-          color3={data.color3}
+          variant={d.variant}
+          title1={d.title1}
+          caption1={d.caption1}
+          img1={d.img1}
+          position1={d.position1}
+          color1={d.color1}
+          title2={d.title2}
+          caption2={d.caption2}
+          img2={d.img2}
+          position2={d.position2}
+          color2={d.color2}
+          title3={d.title3}
+          caption3={d.caption3}
+          img3={d.img3}
+          position3={d.position3}
+          color3={d.color3}
         />
         <button className='exit-button-centered btn btn-black-white d-flex align-items-center justify-content-center' onClick={handleExitClick}>
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20px' height='20px' fill='none' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='me-2'>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='me-2'>
             <circle cx='12' cy='12' r='10'></circle>
             <line x1='15' y1='9' x2='9' y2='15'></line>
             <line x1='9' y1='9' x2='15' y2='15'></line>

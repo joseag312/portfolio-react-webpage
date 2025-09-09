@@ -69,16 +69,149 @@ body {
 /* Carousel
 /**************************************/
 
-.carousel-caption-middle {
-  top: 16.25rem;
+.rounded-clip {
+  border-radius: 1.25rem;
+  overflow: hidden;
 }
 
-.carousel-caption-bottom {
-  top: 30.25rem;
+.rounded-clip .carousel,
+.rounded-clip .carousel-inner,
+.rounded-clip .carousel-item {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.rounded-clip .carousel-item > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1000px);
+  padding-inline: 1rem;
+  text-align: center;
 }
 
 .carousel-caption-top {
-  top: 5.25rem;
+  top: var(--cap-top);
+  bottom: auto;
+  transform: translate(-50%, 0);
+}
+
+.carousel-caption-middle {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-caption-bottom {
+  bottom: var(--cap-bottom);
+  top: auto;
+  transform: translate(-50%, 0);
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1000px);
+  padding-inline: 1rem;
+  text-align: center;
+}
+
+:root {
+  --cap-top: clamp(20px, 7vh, 96px);
+  --cap-bottom: clamp(20px, 7vh, 96px);
+  --cap-nudge-top: -8vh;
+  --cap-nudge-bottom: 6vh;
+}
+
+.carousel-caption-top {
+  top: calc(var(--cap-top) - var(--cap-nudge-top));
+  bottom: auto;
+  transform: translate(-50%, 0);
+}
+.carousel-caption-middle {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+.carousel-caption-bottom {
+  bottom: calc(var(--cap-bottom) + var(--cap-nudge-bottom));
+  top: auto;
+  transform: translate(-50%, 0);
+}
+
+.caption-panel {
+  display: inline-block;
+  max-width: min(92vw, 900px);
+  padding: clamp(10px, 1.8vw, 18px) clamp(14px, 2.4vw, 28px);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.28);
+}
+
+.caption-panel--light {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset, 0 6px 28px rgba(0, 0, 0, 0.28);
+}
+.caption-panel--dark {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 6px 28px rgba(0, 0, 0, 0.28);
+}
+
+.caption-panel--ring {
+  position: relative;
+}
+.caption-panel--ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.caption-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+  font-size: clamp(0.7rem, 2.2vw, 0.9rem);
+  margin-bottom: 0.25rem;
+}
+
+.caption-panel h3 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.1rem, 4.8vw, 1.5rem);
+}
+.caption-panel p {
+  margin: 0;
+  font-size: clamp(0.95rem, 3.6vw, 1.1rem);
+}
+
+@media (max-width: 576px) {
+  .carousel-caption h3 {
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+  }
+  .carousel-caption p {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  }
+}
+
+@media (min-height: 1000px) {
+  :root {
+    --cap-top: clamp(24px, 5vh, 120px);
+    --cap-bottom: clamp(24px, 5vh, 120px);
+  }
 }
 
 .carousel-inner {

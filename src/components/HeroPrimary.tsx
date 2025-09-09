@@ -1,4 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { LOGO } from "../config/cdn";
 
 export function HeroPrimary() {
   return (
@@ -9,7 +10,7 @@ export function HeroPrimary() {
         <Col className='h-100' lg={4}>
           <Container className=' h-100 d-flex flex-column align-items-center justify-content-around'>
             <Container className='text-center'>
-              <img className='d-block mx-auto mb-4 white-shadow' src='https://i.ibb.co/nzrLVz8/Logo2.png' alt='' width='' height={150} />
+              <img className='d-block mx-auto mb-4 white-shadow' src={LOGO} alt='' width='' height={150} />
               <p className='hexagon-title white-shadow text-nowrap'>A quick rant...</p>
               <p className='text-light white-shadow'>
                 I'm passionate about developing robust, scalable, and user-friendly software applications. This is where{" "}

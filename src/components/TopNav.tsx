@@ -3,6 +3,7 @@ import Image from "react-bootstrap/Image";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
+import { LOGO } from "../config/cdn";
 
 export function TopNav() {
   const [expanded, setExpanded] = useState(false);
@@ -26,7 +27,7 @@ export function TopNav() {
     <Navbar variant='dark' bg='dark' expand='lg' fixed='top' expanded={expanded} onToggle={(isExpanded) => setExpanded(isExpanded)} ref={navbarRef}>
       <Container fluid>
         <Navbar.Brand href='#Home'>
-          <Image src={"https://i.ibb.co/nzrLVz8/Logo2.png"} fluid={false} height='24px' width='21px' className='d-inline-block align-text-top'></Image>
+          <Image src={LOGO} fluid={false} height='24px' width='21px' className='d-inline-block align-text-top'></Image>
           &nbsp;&nbsp;&nbsp;<span className='text-info'>GG</span>workz
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='navbar-dark-example' onClick={() => setExpanded(!expanded)} />
