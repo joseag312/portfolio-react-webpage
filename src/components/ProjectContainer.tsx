@@ -1,12 +1,12 @@
 import type { JSX } from "react";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import config from "../config/project-config.json";
+import { PROJECTS } from "../config/ProjectConfig";
 import { HexagonLoader } from "./HexagonLoader";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectList from "./ProjectList";
 
-type ProjectKey = keyof typeof config;
+type ProjectKey = keyof typeof PROJECTS;
 
 function ProjectContainer() {
   const [binStatus, setBinStatus] = useState<"inactive" | "loading" | "loaded">("inactive");

@@ -1,8 +1,6 @@
 📝 Release Backlog
 Change image sourcing to S3/CloudFront
-    Move all assets from i.ibb.co → your own S3 bucket fronted by CloudFront.
     Configure CORS + caching.
-    Update URLs in portfolio.json, index.html, and anywhere else image links appear.
 
 Preload images for fast rendering
     Preload hero + project images.

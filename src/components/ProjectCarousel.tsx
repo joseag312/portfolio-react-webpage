@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
-import config from "../config/project-config.json";
+import { PROJECTS, type Slide } from "../config/ProjectConfig";
 
-type ProjectKey = keyof typeof config;
+type ProjectKey = keyof typeof PROJECTS;
 
 type ImgProps = {
   desktop: string;
@@ -23,13 +23,13 @@ const Img = ({ desktop, mobile, alt, eager = false, className }: ImgProps) => {
 };
 
 export default function ProjectCarousel({ project }: { project: ProjectKey }) {
-  const entry = config[project];
+  const entry = PROJECTS[project];
   if (!entry) return null;
 
   return (
     <div className='h-100 position-relative border rounded rounded-clip white-fill-2'>
       <Carousel interval={2500} pause={false} className='h-100' variant={entry.variant}>
-        {entry.slides.map((s, i) => (
+        {entry.slides.map((s: Slide, i) => (
           <Carousel.Item key={i} className='h-100'>
             <picture className='d-block w-100 h-100'>
               {s.imgMobile && <source media='(max-width: 768px)' srcSet={s.imgMobile} />}

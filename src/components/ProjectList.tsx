@@ -1,6 +1,6 @@
-import config from "../config/project-config.json";
+import { PROJECTS } from "../config/ProjectConfig";
 
-type ProjectKey = keyof typeof config;
+type ProjectKey = keyof typeof PROJECTS;
 
 type ProjectProps = {
   projectName: ProjectKey;
@@ -28,7 +28,7 @@ type ProjectListProps = {
 };
 
 export default function ProjectList({ onProjectSelect }: ProjectListProps) {
-  const repos = Object.keys(config) as ProjectKey[];
+  const repos = Object.keys(PROJECTS) as ProjectKey[];
   return (
     <div className='h-80 w-100 d-flex flex-column align-items-center justify-content-around position-relative'>
       <div className='h-80 w-100 mx-4 px-4 d-flex flex-row flex-wrap align-items-center justify-content-center'>
