@@ -81,7 +81,18 @@ body {
   border-radius: inherit;
 }
 
-.rounded-clip .carousel-item > img {
+/* Make <picture> behave like the old <img> block and inherit rounding */
+.rounded-clip .carousel-item > picture,
+.carousel-item > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+/* Desktop/default: full-bleed cover no matter if <img> or <picture><img> */
+.rounded-clip .carousel-item > :is(img, picture > img),
+.carousel-item > :is(img, picture > img) {
   display: block;
   width: 100%;
   height: 100%;
@@ -89,33 +100,17 @@ body {
   border-radius: inherit;
 }
 
-.carousel-caption {
+/* Absolute-fill just like your original `.carousel-item > img` rule */
+.carousel-item > :is(img, picture > img) {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92%, 1000px);
-  padding-inline: 1rem;
-  text-align: center;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.carousel-caption-top {
-  top: var(--cap-top);
-  bottom: auto;
-  transform: translate(-50%, 0);
-}
-
-.carousel-caption-middle {
-  top: 50%;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-}
-
-.carousel-caption-bottom {
-  bottom: var(--cap-bottom);
-  top: auto;
-  transform: translate(-50%, 0);
-}
-
+/* Captions (deduped – keep just one block) */
 .carousel-caption {
   position: absolute;
   left: 50%;
@@ -157,14 +152,12 @@ body {
   -webkit-backdrop-filter: blur(6px);
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.28);
 }
-
 .caption-panel--light {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset, 0 6px 28px rgba(0, 0, 0, 0.28);
 }
 .caption-panel--dark {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 6px 28px rgba(0, 0, 0, 0.28);
 }
-
 .caption-panel--ring {
   position: relative;
 }
@@ -188,7 +181,6 @@ body {
   font-size: clamp(0.7rem, 2.2vw, 0.9rem);
   margin-bottom: 0.25rem;
 }
-
 .caption-panel h3 {
   margin: 0 0 0.25rem;
   font-size: clamp(1.1rem, 4.8vw, 1.5rem);
@@ -207,24 +199,19 @@ body {
   }
 }
 
-@media (min-height: 1000px) {
-  :root {
-    --cap-top: clamp(24px, 5vh, 120px);
-    --cap-bottom: clamp(24px, 5vh, 120px);
-  }
-}
-
+/* The container still needs height for children to inherit */
 .carousel-inner {
   height: 100%;
 }
 
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  object-fit: cover;
-  height: 100%;
+/* Mobile: avoid aggressive cropping (contain + natural height) */
+@media (max-width: 768px) {
+  .carousel-item > :is(picture > img, img) {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* swap to 'cover' if you prefer full-bleed on mobile */
+  }
 }
 
 .hexagon-loader {

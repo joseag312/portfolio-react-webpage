@@ -1,90 +1,50 @@
 import { Carousel } from "react-bootstrap";
+import config from "../config/project-config.json";
 
-type ProjectProps = {
-  variant: "light" | "dark";
-  title1?: string;
-  caption1?: string;
-  img1: string;
-  img1Mobile?: string;
-  position1: "top" | "middle" | "bottom";
-  color1: "light" | "dark";
-  title2?: string;
-  caption2?: string;
-  img2: string;
-  img2Mobile?: string;
-  position2: "top" | "middle" | "bottom";
-  color2: "light" | "dark";
-  title3?: string;
-  caption3?: string;
-  img3: string;
-  img3Mobile?: string;
-  position3: "top" | "middle" | "bottom";
-  color3: "light" | "dark";
+type ProjectKey = keyof typeof config;
+
+type ImgProps = {
+  desktop: string;
+  mobile?: string;
+  alt: string;
+  eager?: boolean;
+  className?: string;
 };
 
-const Img = ({ desktop, mobile, alt }: { desktop: string; mobile?: string; alt: string }) => (
-  <picture>
-    {mobile && <source media='(max-width: 768px)' srcSet={mobile} />}
-    <img src={desktop} alt={alt} className='d-block w-100 h-100' style={{ objectFit: "cover" }} loading='lazy' decoding='async' />
-  </picture>
-);
+const Img = ({ desktop, mobile, alt, eager = false, className }: ImgProps) => {
+  const mobileSrc = mobile || desktop;
+  return (
+    <picture className='d-block w-100 h-100'>
+      {mobile && <source media='(max-width: 768px)' srcSet={mobile} />}
+      <source media='(min-width: 769px)' srcSet={desktop} />
+      <img src={mobileSrc} alt={alt} className={className ?? "d-block w-100 h-100"} style={{ objectFit: "cover" }} loading={eager ? "eager" : "lazy"} decoding='async' sizes='(max-width: 768px) 100vw, 100vw' />
+    </picture>
+  );
+};
 
-function ProjectCarousel(props: ProjectProps) {
-  let slide1: JSX.Element | null = null;
-  let slide2: JSX.Element | null = null;
-  let slide3: JSX.Element | null = null;
-
-  if (props.title1) {
-    slide1 = (
-      <Carousel.Item className='h-100'>
-        <Img desktop={props.img1} mobile={props.img1Mobile} alt={props.title1} />
-        <Carousel.Caption className={`carousel-caption-${props.position1}`}>
-          <div className={`caption-panel ${props.color1 === "dark" ? "caption-panel--light" : "caption-panel--dark"} caption-panel--ring caption-panel--accent`}>
-            <h3>{props.title1}</h3>
-            <p>{props.caption1}</p>
-          </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-    );
-  }
-
-  if (props.title2) {
-    slide2 = (
-      <Carousel.Item className='h-100'>
-        <Img desktop={props.img2} mobile={props.img2Mobile} alt={props.title2} />
-        <Carousel.Caption className={`carousel-caption-${props.position2}`}>
-          <div className={`caption-panel ${props.color2 === "dark" ? "caption-panel--light" : "caption-panel--dark"} caption-panel--ring caption-panel--accent`}>
-            <h3>{props.title2}</h3>
-            <p>{props.caption2}</p>
-          </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-    );
-  }
-
-  if (props.title3) {
-    slide3 = (
-      <Carousel.Item className='h-100'>
-        <Img desktop={props.img3} mobile={props.img3Mobile} alt={props.title3} />
-        <Carousel.Caption className={`carousel-caption-${props.position3}`}>
-          <div className={`caption-panel ${props.color3 === "dark" ? "caption-panel--light" : "caption-panel--dark"} caption-panel--ring caption-panel--accent`}>
-            <h3>{props.title3}</h3>
-            <p>{props.caption3}</p>
-          </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-    );
-  }
+export default function ProjectCarousel({ project }: { project: ProjectKey }) {
+  const entry = config[project];
+  if (!entry) return null;
 
   return (
     <div className='h-100 position-relative border rounded rounded-clip white-fill-2'>
-      <Carousel interval={2500} pause={false} id='carousel' className='h-100' variant={props.variant}>
-        {slide1}
-        {slide2}
-        {slide3}
+      <Carousel interval={2500} pause={false} className='h-100' variant={entry.variant}>
+        {entry.slides.map((s, i) => (
+          <Carousel.Item key={i} className='h-100'>
+            <picture className='d-block w-100 h-100'>
+              {s.imgMobile && <source media='(max-width: 768px)' srcSet={s.imgMobile} />}
+              <source media='(min-width: 769px)' srcSet={s.imgDesktop} />
+              <img src={s.imgMobile || s.imgDesktop} alt={s.title} className='d-block w-100 h-100' style={{ objectFit: "cover" }} loading={i === 0 ? "eager" : "lazy"} decoding='async' sizes='(max-width: 768px) 100vw, 100vw' />
+            </picture>
+            <Carousel.Caption className={`carousel-caption-${s.position}`}>
+              <div className={`caption-panel ${s.color === "dark" ? "caption-panel--light" : "caption-panel--dark"} caption-panel--ring caption-panel--accent`}>
+                <h3>{s.title}</h3>
+                <p>{s.caption}</p>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
       </Carousel>
     </div>
   );
 }
-
-export default ProjectCarousel;

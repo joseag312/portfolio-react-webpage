@@ -1,5 +1,5 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Col, Row } from "react-bootstrap";
-import { QueryClient, QueryClientProvider } from "react-query";
 import Background from "./src/components/Background";
 import { BottomNav } from "./src/components/BottomNav";
 import { HeroPrimary } from "./src/components/HeroPrimary";
