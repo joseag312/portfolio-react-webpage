@@ -1,6 +1,4 @@
 📝 Release Backlog
-Change image sourcing to S3/CloudFront
-    Configure CORS + caching.
 
 Preload images for fast rendering
     Preload hero + project images.

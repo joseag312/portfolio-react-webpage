@@ -68,10 +68,10 @@ This project was designed as a **demonstration of software engineering practices
 
 ### 🏙️ UI
 
-![Webpage](public/pp-webpage.png)
+![Webpage](public/README/pp-webpage.png)
 
 ### ☁️ Architecture
 
-![Cloud](public/pp-cloud.png)
+![Cloud](public/README/pp-cloud.png)
 
 ---
