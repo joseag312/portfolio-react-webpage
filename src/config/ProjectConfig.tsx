@@ -1,4 +1,4 @@
-import { CDN } from "./cdn";
+import { CDN } from "./CDN";
 
 type CaptionPosition = "top" | "middle" | "bottom";
 type CaptionColor = "light" | "dark";
@@ -110,3 +110,20 @@ export const PROJECTS = {
     ],
   },
 } as const;
+
+export function buildProjectFromConfig(key: ProjectKey): Project | null {
+  const source = PROJECTS[key];
+  if (!source) return null;
+
+  return {
+    variant: source.variant,
+    slides: source.slides.map((s) => ({
+      title: s.title,
+      caption: s.caption,
+      position: s.position,
+      color: s.color,
+      imgDesktop: s.imgDesktop,
+      imgMobile: s.imgMobile,
+    })),
+  };
+}

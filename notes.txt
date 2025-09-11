@@ -1,4 +1,7 @@
 📝 Release Backlog
+Same image width/height for all the images, multiple versions of them
+We've proven the carousel can load from AWS, what about the stack part??
+A lot of images still ship with /public would it be worthfile to fetch those from AWS?
 
 Preload images for fast rendering
     Preload hero + project images.

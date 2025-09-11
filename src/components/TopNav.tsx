@@ -3,7 +3,7 @@ import Image from "react-bootstrap/Image";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
-import { LOGO } from "../config/cdn";
+import { LOGO } from "../config/CDN";
 
 export function TopNav() {
   const [expanded, setExpanded] = useState(false);

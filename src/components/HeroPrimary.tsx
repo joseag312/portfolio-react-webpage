@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { LOGO } from "../config/cdn";
+import { LOGO } from "../config/CDN";
 
 export function HeroPrimary() {
   return (
