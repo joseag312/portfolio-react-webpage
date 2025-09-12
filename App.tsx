@@ -36,7 +36,9 @@ function App() {
         <a id='Stack'></a>
         <div className='section-qt'></div>
         <Row className='offset-nav-bottom'>
-          <StackSection />
+          <Col>
+            <StackSection />
+          </Col>
         </Row>
         <Row>
           <Col>

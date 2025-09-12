@@ -15,11 +15,11 @@ export function HeroPrimary() {
               <p className='text-light white-shadow'>I'm passionate about developing robust, scalable, and user-friendly software.</p>
               <p className='text-light white-shadow'>
                 {" "}
-                I started my project{" "}
+                I started{" "}
                 <span className='white-shadow-high font-weight-bold'>
                   <span className='text-info'>GG</span>workz&nbsp;
                 </span>
-                to have a portfolio presentation and land a role in a creative high-impact team. Hope you like it!
+                to explore a modern tech stack and showcase my skills. Thanks for stopping by!
               </p>
             </Container>
           </Container>

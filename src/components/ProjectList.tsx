@@ -13,7 +13,7 @@ function Project({ projectName, onProjectSelect, anim }: ProjectProps) {
     onProjectSelect(projectName);
   }
 
-  const cls = anim === "exit" ? "svg-grow-fade m-2--responsive" : "project-icon widget m-2--responsive";
+  const cls = anim === "exit" ? "svg-collapse m-2--responsive" : "project-icon widget m-2--responsive";
 
   return (
     <div className={cls} onClick={handleClick} style={{ cursor: "pointer" }}>

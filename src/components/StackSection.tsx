@@ -8,27 +8,29 @@ interface StackType {
 function StackCard({ type }: StackType) {
   let iconDescs: string[] = [];
   let imgPaths: string[] = [];
+  let imgScale: string[] = [];
 
   if (type == "front") {
     iconDescs = ["React", "Bootstrap", "TypeScript", "Sass"];
     imgPaths = ["/react.png", "/bootstrap.png", "/typescript.png", "/sass.png"];
+    imgScale = ["60", "60", "60", "60"];
   } else if (type == "back") {
     iconDescs = ["Java", "Spring", "Python", "SQL"];
     imgPaths = ["/java.png", "/spring.png", "/python.png", "/sql.png"];
+    imgScale = ["80", "60", "60", "60"];
   } else if (type == "ops") {
     iconDescs = ["AWS", "Linux", "TomCat"];
     imgPaths = ["/aws.png", "/linux.png", "/tomcat.png", "/sass.png"];
+    imgScale = ["80", "80", "80"];
   }
 
   return (
     <>
       {iconDescs.map((iconDesc, index) => (
         <div key={iconDesc} className='h-20 w-100 d-flex flex-row align-items-center justify-content-around'>
-          <div className='w-60 d-flex flex-row justify-content-center align items-center'>
-            <img className='d-block white-shadow h-100' src={imgPaths[index]} alt='' width='' />
-          </div>
-          <div className='w-40 text-left'>
-            <p className='hexagon-subtitle white-shadow m-0'>{iconDesc}</p>
+          <div className='h-100 flex-column d-flex justify-content-center align items-center'>
+            <img className={`tech-icon-${imgScale[index]} d-block white-shadow h-100`} src={imgPaths[index]} alt='' width='' />
+            <p className='stack-text white-shadow m-0 text-center'>{iconDesc}</p>
           </div>
         </div>
       ))}
@@ -106,7 +108,10 @@ function StackSection() {
   }
 
   return (
-    <Container className='section-fluid position-relative'>
+    <Container
+      className='h-100 section
+     position-relative'
+    >
       <Row className='h-20'>
         <Col className='h-100'>
           <Container className='h-100 d-flex flex-column align-items-center justify-content-end'>
