@@ -66,8 +66,92 @@ body {
 }
 
 /******************************************************************************************************************/
+/* Project List
+/******************************************************************************************************************/
+
+.project-container {
+  flex-direction: row;
+}
+
+.project-icon {
+  fill: lightgray;
+  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.35));
+  -webkit-filter: drop-shadow(0, 0, 20, rgba(255, 255, 255, 0.35));
+}
+
+.project-icon svg {
+  stroke-width: 6;
+}
+
+.project-icon:hover svg {
+  fill: rgb(184, 184, 184);
+}
+
+.project-icon:active svg {
+  fill: rgb(238, 238, 238);
+}
+
+.svg-grow-fade {
+  animation: growFade 0.3s ease forwards;
+}
+@keyframes growFade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-container {
+    flex-direction: column;
+  }
+}
+
+/******************************************************************************************************************/
 /* Carousel
 /******************************************************************************************************************/
+
+.carousel-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1000px);
+  padding-inline: 1rem;
+  text-align: center;
+}
+
+.carousel-caption-top {
+  top: calc(var(--cap-top) - var(--cap-nudge-top));
+  bottom: auto;
+  transform: translate(-50%, 0);
+}
+
+.carousel-caption-middle {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-caption-bottom {
+  bottom: calc(var(--cap-bottom) + var(--cap-nudge-bottom));
+  top: auto;
+  transform: translate(-50%, 0);
+}
+
+:root {
+  --cap-top: clamp(20px, 7vh, 96px);
+  --cap-bottom: clamp(20px, 7vh, 96px);
+  --cap-nudge-top: -8vh;
+  --cap-nudge-bottom: 6vh;
+}
 
 .rounded-clip {
   border-radius: 1.25rem;
@@ -81,7 +165,6 @@ body {
   border-radius: inherit;
 }
 
-/* Make <picture> behave like the old <img> block and inherit rounding */
 .rounded-clip .carousel-item > picture,
 .carousel-item > picture {
   display: block;
@@ -90,59 +173,7 @@ body {
   border-radius: inherit;
 }
 
-/* Desktop/default: full-bleed cover no matter if <img> or <picture><img> */
 .rounded-clip .carousel-item > :is(img, picture > img),
-.carousel-item > :is(img, picture > img) {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-/* Absolute-fill just like your original `.carousel-item > img` rule */
-.carousel-item > :is(img, picture > img) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Captions (deduped – keep just one block) */
-.carousel-caption {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92%, 1000px);
-  padding-inline: 1rem;
-  text-align: center;
-}
-
-:root {
-  --cap-top: clamp(20px, 7vh, 96px);
-  --cap-bottom: clamp(20px, 7vh, 96px);
-  --cap-nudge-top: -8vh;
-  --cap-nudge-bottom: 6vh;
-}
-
-.carousel-caption-top {
-  top: calc(var(--cap-top) - var(--cap-nudge-top));
-  bottom: auto;
-  transform: translate(-50%, 0);
-}
-.carousel-caption-middle {
-  top: 50%;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-}
-.carousel-caption-bottom {
-  bottom: calc(var(--cap-bottom) + var(--cap-nudge-bottom));
-  top: auto;
-  transform: translate(-50%, 0);
-}
-
 .caption-panel {
   display: inline-block;
   max-width: min(92vw, 900px);
@@ -190,6 +221,120 @@ body {
   font-size: clamp(0.95rem, 3.6vw, 1.1rem);
 }
 
+.carousel-inner {
+  height: 100%;
+}
+
+.hexagon-loader {
+  width: calc(min(480px, 50vh - 96px));
+  height: calc(min(480px, 50vh - 96px));
+}
+
+.bin-fade-enter {
+  opacity: 0;
+  animation: binFadeIn 0.5s ease forwards;
+}
+@keyframes binFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.bin-fade-exit {
+  opacity: 1;
+  animation: binFadeOut 0.4s ease forwards;
+}
+@keyframes binFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.btn-gray-white {
+  background-color: gray;
+  color: white;
+  border: 1px solid white;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.btn-black-white {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.btn-black-white:hover,
+.btn-gray-white:hover {
+  background-color: darkcyan;
+  color: white;
+  border: 1px solid white;
+}
+
+@keyframes popInFirst {
+  0% {
+    transform: scale(3);
+    opacity: 0;
+  }
+  60% {
+    color: teal;
+  }
+  70% {
+    color: white;
+  }
+  80% {
+    color: teal;
+    transform: scale(4.6);
+    opacity: 1;
+  }
+  90% {
+    color: white;
+  }
+  100% {
+    color: teal;
+    transform: scale(3);
+    opacity: 1;
+  }
+}
+
+.github-link {
+  transform: scale(3);
+  position: absolute;
+  bottom: 73px;
+  right: 70px;
+  z-index: 5;
+  color: teal;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+  animation: popInFirst 1500ms ease both;
+}
+
+.github-link:hover,
+.github-link:active {
+  transform: scale(4.6);
+  color: rgb(44, 210, 210);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-link {
+    animation: none !important;
+  }
+}
+
+.github-link-pop {
+  animation: none !important;
+}
+
 @media (max-width: 576px) {
   .carousel-caption h3 {
     font-size: clamp(1rem, 4.5vw, 1.4rem);
@@ -199,10 +344,6 @@ body {
   }
 }
 
-.carousel-inner {
-  height: 100%;
-}
-
 @media (max-width: 768px) {
   .carousel-item > :is(picture > img, img) {
     position: relative;
@@ -210,11 +351,50 @@ body {
     height: auto;
     object-fit: contain;
   }
-}
 
-.hexagon-loader {
-  width: calc(min(720px, 50vh - 96px));
-  height: calc(min(720px, 50vh - 96px));
+  @keyframes popInFirst {
+    0% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+    60% {
+      color: teal;
+    }
+    70% {
+      color: white;
+    }
+    80% {
+      color: teal;
+      transform: scale(2.3);
+      opacity: 1;
+    }
+    90% {
+      color: white;
+    }
+    100% {
+      color: teal;
+      transform: scale(1.5);
+      opacity: 1;
+    }
+  }
+
+  .github-link {
+    transform: scale(1.5);
+    position: absolute;
+    bottom: 30px;
+    right: 35px;
+    z-index: 5;
+    color: teal;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+    animation: popInFirst 1500ms ease both;
+  }
+
+  .github-link:hover,
+  .github-link:active {
+    transform: scale(2.3);
+    color: rgb(44, 210, 210);
+  }
 }
 
 /******************************************************************************************************************/
@@ -237,54 +417,6 @@ body {
 
 .white-fill-2 {
   background-color: rgba(255, 255, 255, 0.5);
-}
-
-/******************************************************************************************************************/
-/* Project List
-/******************************************************************************************************************/
-
-.box-white-shadow {
-  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 10, rgba(255, 255, 255, 0.8));
-}
-
-.hexagon-project {
-  min-height: 55px;
-  height: 5.6vw;
-}
-
-.project-icon {
-  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 20, rgba(255, 255, 255, 0.8));
-}
-
-.project-icon:hover {
-  filter: none;
-  -webkit-filter: none;
-}
-
-.project-icon:active {
-  filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 1, rgba(255, 255, 255, 0.8));
-}
-
-@media (max-width: 768px) {
-  .project-icon {
-    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.8));
-    -webkit-filter: drop-shadow(0, 0, 20, rgba(255, 255, 255, 0.8));
-  }
-
-  .project-icon:hover {
-    filter: none;
-  }
-
-  .project-icon:active {
-    filter: none;
-  }
-}
-
-.m-2--responsive {
-  margin: calc(max(8px, 1.5vw));
 }
 
 /******************************************************************************************************************/
@@ -316,22 +448,6 @@ body {
   transition-duration: 0.3s;
 }
 
-.w-60 {
-  width: 60% !important;
-}
-
-.w-40 {
-  width: 40% !important;
-}
-
-.h-30 {
-  height: 30%;
-}
-
-.h-70 {
-  height: 70%;
-}
-
 /******************************************************************************************************************/
 /* Background
 /******************************************************************************************************************/
@@ -353,12 +469,44 @@ body {
 /* Utility
 /******************************************************************************************************************/
 
+.w-40 {
+  width: 40% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
 .h-20 {
   height: 20%;
 }
 
+.h-30 {
+  height: 30%;
+}
+
+.h-70 {
+  height: 70%;
+}
+
 .h-80 {
   height: 80%;
+}
+
+.mb-0 {
+  margin-bottom: 0em;
+}
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.mt-3 {
+  margin-top: 5em;
+}
+
+.m-2--responsive {
+  margin: calc(max(8px, 1.5vw));
 }
 
 .position-relative {
@@ -370,66 +518,7 @@ body {
   border-width: 3px !important;
 }
 
-/******************************************************************************************************************/
-/* Test
-/******************************************************************************************************************/
-
-.bin-fade-enter {
-  opacity: 0;
-  animation: binFadeIn 0.5s ease forwards;
-}
-@keyframes binFadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.bin-fade-exit {
-  opacity: 1;
-  animation: binFadeOut 0.4s ease forwards;
-}
-@keyframes binFadeOut {
-  to {
-    opacity: 0;
-  }
-}
-
-.project-list {
-  list-style: none;
-  padding: 0;
-}
-
-.project-list li {
-  margin: 10px 0;
-}
-
-.project-list button {
-  width: 200px;
-  text-align: center;
-}
-
-.ml-1 {
-  margin-left: 1em;
-}
-
-.mt-3 {
-  margin-top: 5em;
-}
-
-.btn-black-white {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  transition: all 0.3s ease;
-}
-
-.btn-black-white:hover {
-  background-color: darkcyan;
-  color: white;
-  border: 1px solid white;
+.box-white-shadow {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+  -webkit-filter: drop-shadow(0, 0, 10, rgba(255, 255, 255, 0.8));
 }

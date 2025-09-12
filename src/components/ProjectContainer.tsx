@@ -64,13 +64,13 @@ function ProjectContainer() {
           <div className={`h-100 ${anim === "enter" ? "bin-fade-enter" : anim === "exit" ? "bin-fade-exit" : ""}`}>
             <Row className='h-20'>
               <Col className='h-100'>
-                <Container className='h-100 mt-5 d-flex flex-column align-items-center justify-content-end'>
-                  <p className='text-center text-light white-shadow hexagon-title'>Here are some of my projects 🛠️</p>
-                  <p className='text-center text-light white-shadow'>Click to learn more</p>
+                <Container className='h-100 mt-1 d-flex flex-column align-items-center justify-content-end'>
+                  <p className='mb-0 text-center text-light white-shadow hexagon-title'>Porftolio 🥽</p>
+                  <p className='mb-0 text-center text-light white-shadow'>Click a project!</p>
                 </Container>
               </Col>
             </Row>
-            <ProjectList onProjectSelect={handleProjectSelect} />
+            <ProjectList onProjectSelect={handleProjectSelect} anim={anim} />
           </div>
         )}
 

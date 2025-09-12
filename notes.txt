@@ -1,13 +1,5 @@
 📝 Release Backlog
-Same image width/height for all the images, multiple versions of them
-We've proven the carousel can load from AWS, what about the stack part??
-A lot of images still ship with /public would it be worthfile to fetch those from AWS?
-
-Preload images for fast rendering
-    Preload hero + project images.
-    Add <link rel="preload"> or <link rel="prefetch"> in index.html.
-    JS preloader for carousel / next slides (portfolio.json images).
-    Lazy-load non-critical assets.
+Same a different image width/height for all the images, multiple versions of them
 
 Fix mobile friendliness
     TopNav collapse + spacing.
