@@ -243,7 +243,7 @@
 
 @keyframes popInFirst {
   0% {
-    transform: scale(3);
+    transform: scale(2.1);
     opacity: 0;
   }
   60% {
@@ -254,7 +254,7 @@
   }
   80% {
     color: teal;
-    transform: scale(4.6);
+    transform: scale(3.2);
     opacity: 1;
   }
   90% {
@@ -262,16 +262,16 @@
   }
   100% {
     color: teal;
-    transform: scale(3);
+    transform: scale(2.1);
     opacity: 1;
   }
 }
 
 .github-link {
-  transform: scale(3);
+  transform: scale(2.1);
   position: absolute;
-  bottom: 73px;
-  right: 70px;
+  bottom: 45px;
+  right: 50px;
   z-index: 5;
   color: teal;
   font-size: 1.5rem;
@@ -281,7 +281,7 @@
 
 .github-link:hover,
 .github-link:active {
-  transform: scale(4.6);
+  transform: scale(3.2);
   color: rgb(44, 210, 210);
 }
 
@@ -325,7 +325,7 @@
     }
     80% {
       color: teal;
-      transform: scale(2.3);
+      transform: scale(2);
       opacity: 1;
     }
     90% {
@@ -341,7 +341,7 @@
   .github-link {
     transform: scale(1.5);
     position: absolute;
-    bottom: 30px;
+    bottom: 28px;
     right: 35px;
     z-index: 5;
     color: teal;
