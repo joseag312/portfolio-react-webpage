@@ -142,6 +142,11 @@
   -webkit-backdrop-filter: blur(6px);
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.28);
 }
+.caption-panel {
+  background-color: rgba(0, 0, 0, 0.35); /* subtle tint */
+  backdrop-filter: blur(6px);
+}
+
 .caption-panel--light {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset, 0 6px 28px rgba(0, 0, 0, 0.28);
 }
@@ -151,13 +156,14 @@
 .caption-panel--ring {
   position: relative;
 }
+
 .caption-panel--ring::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.05));
+  padding: 2px;
+  background: linear-gradient(135deg, rgb(44, 210, 210) 0%, rgba(44, 210, 210, 0.4) 100%);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -236,7 +242,7 @@
 
 .btn-black-white:hover,
 .btn-gray-white:hover {
-  background-color: darkcyan;
+  background-color: rgb(44, 210, 210);
   color: white;
   border: 1px solid white;
 }
@@ -247,21 +253,21 @@
     opacity: 0;
   }
   60% {
-    color: teal;
-  }
-  70% {
     color: white;
   }
+  70% {
+    color: rgb(44, 210, 210);
+  }
   80% {
-    color: teal;
-    transform: scale(3.2);
+    color: white;
+    transform: scale(2.6);
     opacity: 1;
   }
   90% {
-    color: white;
+    color: rgb(44, 210, 210);
   }
   100% {
-    color: teal;
+    color: white;
     transform: scale(2.1);
     opacity: 1;
   }
@@ -273,7 +279,7 @@
   bottom: 45px;
   right: 50px;
   z-index: 5;
-  color: teal;
+  color: white;
   font-size: 1.5rem;
   transition: transform 0.2s ease, color 0.2s ease;
   animation: popInFirst 1500ms ease both;
@@ -281,7 +287,7 @@
 
 .github-link:hover,
 .github-link:active {
-  transform: scale(3.2);
+  transform: scale(2.4);
   color: rgb(44, 210, 210);
 }
 
@@ -295,12 +301,14 @@
   animation: none !important;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .carousel-caption h3 {
-    font-size: clamp(1rem, 4.5vw, 1.4rem);
+    font-size: clamp(0.83rem, 3.8vw, 1.2rem);
+    line-height: 1.2;
   }
   .carousel-caption p {
-    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    font-size: clamp(0.72rem, 3.2vw, 1rem);
+    line-height: 1.3;
   }
 }
 
@@ -318,21 +326,21 @@
       opacity: 0;
     }
     60% {
-      color: teal;
-    }
-    70% {
       color: white;
     }
+    70% {
+      color: rgb(44, 210, 210);
+    }
     80% {
-      color: teal;
-      transform: scale(2);
+      color: white;
+      transform: scale(1.7);
       opacity: 1;
     }
     90% {
-      color: white;
+      color: rgb(44, 210, 210);
     }
     100% {
-      color: teal;
+      color: white;
       transform: scale(1.5);
       opacity: 1;
     }
@@ -344,7 +352,7 @@
     bottom: 28px;
     right: 35px;
     z-index: 5;
-    color: teal;
+    color: white;
     font-size: 1.5rem;
     transition: transform 0.2s ease, color 0.2s ease;
     animation: popInFirst 1500ms ease both;
@@ -352,87 +360,109 @@
 
   .github-link:hover,
   .github-link:active {
-    transform: scale(2.3);
+    transform: scale(1.7);
     color: rgb(44, 210, 210);
   }
 }
 
 /******************************************************************************************************************/
-/* Stack
+/* Stack Section
 /******************************************************************************************************************/
 
-.stack-text {
-  color: white;
-  font-size: calc(0.7vw + 3px);
-  z-index: 10;
-  transform: translate(0%, -50%);
+.stack-section {
+  position: relative;
+  min-height: calc(100vh - 112px);
+}
+
+.root-node {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+  transform-origin: center;
+}
+
+.root-node.active {
+  transform: scale(1.05);
 }
 
 .stack-icon {
-  filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 30, rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.7));
+  transition: filter 0.2s ease;
 }
 
 .stack-icon:hover {
-  filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 25, rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 1));
 }
 
-.stack-icon:active {
-  filter: drop-shadow(0px 0px 23px rgba(255, 255, 255, 0.8));
-  -webkit-filter: drop-shadow(0, 0, 23, rgba(255, 255, 255, 0.8));
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
-.fade {
-  -webkit-transition-duration: 5s;
-  transition-duration: 0.3s;
+.orbit-node {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.fade.show {
-  -webkit-transition-duration: 5s;
-  transition-duration: 0.3s;
+.orbit-content {
+  opacity: 0;
+  transform: translate(0, 0) scale(0.2);
 }
 
-.tech-icon-40 {
-  transform: scale(0.4);
+.root-node.active .orbit-content {
+  animation: orbitPopIn 1.8s forwards;
+  animation-delay: var(--delay, 0s);
 }
 
-.tech-icon-60 {
-  transform: scale(0.6);
+.orbit-content p {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: white;
+  text-align: center;
 }
 
-.tech-icon-70 {
-  transform: scale(0.7);
-}
-
-.tech-icon-80 {
-  transform: scale(0.8);
+@keyframes orbitPopIn {
+  0% {
+    opacity: 0;
+    transform: translate(-25px, -25px) scale(0.2);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(-25px, -25px) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-25px, -25px) scale(1.2);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate(-25px, -25px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-25px, -25px) scale(0.2);
+  }
 }
 
 @media (max-width: 768px) {
-  .stack-text {
-    font-size: 10px;
-    transform: translate(0%, -100%);
+  .root-node {
+    width: 150px;
+    height: 150px;
   }
-
-  .tech-icon-40 {
-    transform: scale(0.3);
-  }
-
-  .tech-icon-60 {
-    transform: scale(0.45);
-  }
-
-  .tech-icon-70 {
-    transform: scale(0.52);
-  }
-
-  .tech-icon-80 {
-    transform: scale(0.6);
-  }
-
-  .stack-icon {
-    transform: scale(0.7);
+  .orbit-content p {
+    font-size: 0.7rem;
   }
 }
 
@@ -457,9 +487,22 @@
 /* Utility
 /******************************************************************************************************************/
 
+#Home,
+#About,
+#Projects,
+#Stack {
+  scroll-margin-top: 56px;
+}
+
 body {
   background: black;
   overflow-x: hidden;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .offset-nav-top {
@@ -476,6 +519,10 @@ body {
 
 .section {
   height: calc(100vh - 112px);
+}
+
+.section-bottom {
+  height: 100vh;
 }
 
 .section-fluid {
@@ -508,6 +555,10 @@ body {
 
 .mb-0 {
   margin-bottom: 0em;
+}
+
+.mb-3 {
+  margin-bottom: 3em;
 }
 
 .ml-1 {

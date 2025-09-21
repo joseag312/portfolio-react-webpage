@@ -48,7 +48,6 @@ export function HexagonLoader({ speed = 2 }: HexagonLoaderProps) {
         </path>
       </defs>
 
-      {/* Six spokes × three rings pattern, same as yours */}
       <use xlinkHref='#r1' />
       <use xlinkHref='#r1' transform='rotate(60 160 160)' />
       <use xlinkHref='#r1' transform='rotate(120 160 160)' />

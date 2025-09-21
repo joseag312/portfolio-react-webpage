@@ -59,14 +59,12 @@ function ProjectContainer() {
   return (
     <div className='h-100 position-relative p-5'>
       <div className='h-100 border rounded position-relative overflow-hidden'>
-        {/* Bin Status: Inactive */}
         {binStatus === "inactive" && (
           <div className={`h-100 ${anim === "enter" ? "bin-fade-enter" : anim === "exit" ? "bin-fade-exit" : ""}`}>
             <Row className='h-20'>
               <Col className='h-100'>
                 <Container className='h-100 mt-1 d-flex flex-column align-items-center justify-content-end'>
-                  <p className='mb-0 text-center text-light white-shadow hexagon-title'>Porftolio 🥽</p>
-                  <p className='mb-0 text-center text-light white-shadow'>Click a project!</p>
+                  <p className='text-center text-light white-shadow hexagon-title'>Porftolio 🥽</p>
                 </Container>
               </Col>
             </Row>
@@ -74,7 +72,6 @@ function ProjectContainer() {
           </div>
         )}
 
-        {/* Bin Status: Loading */}
         {binStatus === "loading" && (
           <div className={`h-100 white-fill d-flex align-items-center justify-content-center ${anim === "enter" ? "bin-fade-enter" : anim === "exit" ? "bin-fade-exit" : ""}`}>
             <div className='hexagon-loader'>
@@ -83,7 +80,6 @@ function ProjectContainer() {
           </div>
         )}
 
-        {/* Bin Status: Loaded */}
         {binStatus === "loaded" && (
           <div className={`h-100 border rounded position-relative white-fill-2 ${anim === "enter" ? "bin-fade-enter" : anim === "exit" ? "bin-fade-exit" : ""}`}>
             {prebuilt}

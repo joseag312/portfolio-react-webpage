@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export function HeroSecondary() {
   return (
-    <Container className='section position-relative' id='Coffee' fluid>
+    <Container className='section-bottom position-relative' id='Coffee' fluid>
       <a id='#hero'></a>
       <Row className='h-100'>
         <Col xs={4}></Col>

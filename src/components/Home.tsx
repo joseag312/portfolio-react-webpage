@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 export function Home() {
   return (
     <Container className='section position-relative' id='Home' fluid>
-      <a id='#home'></a>
       <Row className='h-100'>
         <Col md={1} className='d-md-block d-sm-none'></Col>
         <Col className='h-100' md='auto'>

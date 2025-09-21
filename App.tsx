@@ -16,6 +16,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <Background />
+        <a id='#home'></a>
         <TopNav />
         <Row className='offset-nav-top'>
           <Col>
@@ -33,8 +34,8 @@ function App() {
             <ProjectSection />
           </Col>
         </Row>
-        <a id='Stack'></a>
         <div className='section-qt'></div>
+        <a id='Stack'></a>
         <Row className='offset-nav-bottom'>
           <Col>
             <StackSection />

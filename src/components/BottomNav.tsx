@@ -14,11 +14,8 @@ export function BottomNav() {
           <Nav.Link href='https://github.com/joseag312'>
             <FavIcon iconType='GitHub' />
           </Nav.Link>
-          <Nav.Link href='tel:555-555-5555'>
-            <FavIcon iconType='Phone' />
-          </Nav.Link>
-          <Nav.Link href='mailto:example@example.com'>
-            <FavIcon iconType='Mail' />
+          <Nav.Link href='https://leetcode.com/u/joseag312/'>
+            <FavIcon iconType='LeetCode' />
           </Nav.Link>
         </Nav>
       </Container>
