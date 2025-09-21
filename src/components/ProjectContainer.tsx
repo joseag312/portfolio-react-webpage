@@ -38,7 +38,7 @@ function ProjectContainer() {
       )
     );
 
-    const minDuration = new Promise((res) => setTimeout(res, 2100));
+    const minDuration = new Promise((res) => setTimeout(res, 3500));
     await Promise.all([preload, minDuration]);
     setAnim("exit");
     setTimeout(() => {
