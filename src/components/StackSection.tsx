@@ -43,7 +43,8 @@ function OrbitNodes({ type }: { type: StackKey }) {
     <div className='orbit-container'>
       {stack.icons.map((icon, i) => {
         const count = stack.icons.length;
-        const angle = (360 / count) * (count - i) + 225;
+        const base = (360 / count) * (count - i);
+        const angle = base + (count % 2 === 0 ? 225 : 30);
         return (
           <div
             key={icon.name}
